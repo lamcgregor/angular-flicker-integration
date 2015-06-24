@@ -42,7 +42,7 @@ module.exports = function (grunt) {
         assemble: {
             options: {
                 flatten: false,
-                partials: ['<%= config.source %>html/partials/**/*.hbs'],
+                partials: ['<%= config.source %>html/partials/**/*.{hbs,handlebars}'],
                 layout: ['<%= config.source %>html/layouts/default.hbs'],
                 data: ['<%= config.source %>html/data/**/*.{json,yml}']
             },
@@ -93,14 +93,14 @@ module.exports = function (grunt) {
     			options: {
     				livereload: true,
     			},
-    			files: ['<%= config.source %>html/**/*.{html,hbs,json,yml}'],
+    			files: ['<%= config.source %>html/**/*.{html,hbs,json,yml,handlebars}'],
     			tasks: ['html']
             },
             css: {
                 options: {
                     livereload: true
                 },
-                files: ['<%= config.source %>/css/**/*.scss'],
+                files: ['<%= config.source %>css/**/*.scss'],
                 tasks: ['css']
             }
     	}
@@ -109,11 +109,12 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('assemble');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-watch');
     
-	grunt.registerTask('html', ['newer:assemble' ]);
+	grunt.registerTask('html', ['assemble' ]);
 	grunt.registerTask('css', ['newer:sass']);
-	grunt.registerTask('js', ['newer:copy:js' ]);
+	grunt.registerTask('js', ['copy:js' ]);
     grunt.registerTask('build', [
         'sass',
         'assemble',
