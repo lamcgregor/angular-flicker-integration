@@ -8,7 +8,6 @@ FlickrController.controller('FlickrLoader', ['$scope', '$http', '$log',
 				filter = sessionStorage.queryTerm;
 				$scope.flickrSearch = sessionStorage.queryTerm;
 			}
-			$log.log(sessionStorage);
 			$http.jsonp('https://api.flickr.com/services/feeds/photos_public.gne?format=json&callback=jsonFlickrFeed&api_key=' + apiKey + '&tags=' + filter).success(function(data){});
 		};
 		jsonFlickrFeed = function(data) {
