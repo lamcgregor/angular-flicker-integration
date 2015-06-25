@@ -1,0 +1,15 @@
+<section class="flickr-container">
+	<h2>Care to filter it up a bit?</h2>
+	<div class="search"><input ng-model="flickrSearch" ng-change="filterImages()" type="search" placeholder="Filter by tag..." /></div>
+	<div ng-show="flickrSearch">Currently showing: \{{flickrSearch}}</div>
+	<article class="flickr-item" ng-repeat="item in flickrJson.items">
+		<img ng-src="\{{item.media.m}}" />
+		<div class="flickr-overlay">
+			<h4>Title: \{{item.title}}</h4>
+			<div class="details">
+				Author: \{{item.author}}<br />
+				Tags: \{{item.tags}}
+			</div>
+		</div>
+	</article>
+</section>

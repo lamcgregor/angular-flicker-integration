@@ -1,30 +1,30 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="FlickrController">
+<html lang="en" ng-app="FlickrController" ng-controller="FlickrLoader">
 	<head>
-		<title>New page | Test angular page</title>
+		<title>Home | Flickr &gt; AngularJS page</title>
 		<link rel="stylesheet" type="text/css" href="css/global.css" />
-		<script type="text/javascript" src="/js/jquery.min.js"></script>
 		<script type="text/javascript" src="/js/angular.min.js"></script>
-		<script type="text/javascript" src="/js/angular-route.min.js"></script>
 		<script type="text/javascript" src="/js/controller.js"></script>
 	</head>
+	<body>
+		
 
-	<body ng-controller="FlickrLoader">
-		<h1>Welcome! How about some beautiful pictures?</h1>
-		<section class="flickr-container">
-			<h2>Care to filter it up a bit?</h2>
-			<div class="search"><input ng-model="flickrSearch" ng-change="filterImages()" type="search" placeholder="Filter by tag..." /></div>
-			<div ng-show="flickrSearch">Currently showing: {{flickrSearch}}</div>
-			<article class="flickr-item" ng-repeat="item in flickrJson.items">
-				<img ng-src="{{item.media.m}}" />
-				<div class="flickr-overlay">
-					<h4>Title: {{item.title}}</h4>
-					<div class="details">
-						Author: {{item.author}}<br />
-						Tags: {{item.tags}}
-					</div>
-				</div>
-			</article>
-		</section>
+<h1>Welcome! How about some beautiful pictures?</h1>
+
+<section class="flickr-container">
+	<h2>Care to filter it up a bit?</h2>
+	<div class="search"><input ng-model="flickrSearch" ng-change="filterImages()" type="search" placeholder="Filter by tag..." /></div>
+	<div ng-show="flickrSearch">Currently showing: {{flickrSearch}}</div>
+	<article class="flickr-item" ng-repeat="item in flickrJson.items">
+		<img ng-src="{{item.media.m}}" />
+		<div class="flickr-overlay">
+			<h4>Title: {{item.title}}</h4>
+			<div class="details">
+				Author: {{item.author}}<br />
+				Tags: {{item.tags}}
+			</div>
+		</div>
+	</article>
+</section>
 	</body>
 </html>
